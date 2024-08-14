@@ -70,7 +70,7 @@ Magento 2.4.6-p2 Docker Setup:
           		2. Install M2 via CLI(/var/www/magento246):
                        
                         bin/magento setup:install \
-                        --base-url=http://magento246.loc/ \
+                        --base-url=http://magento246.local/ \
                         --db-host=mariadb_246 \
                         --db-name=magento246 \
                         --db-user=mage246_user \
@@ -121,13 +121,13 @@ Magento 2.4.6-p2 Docker Setup:
           		    
 ```        
 
-6. Configure your hosts file: 127.0.0.1 magento246.loc 
+6. Configure your hosts file: 127.0.0.1 magento246.local 
    1. In windows:-  c:\Windows\System32\Drivers\etc\hosts.
    2. Mac/Ubuntu:-  /etc/hosts
 
-7. Open http://magento246.loc/ 
+7. Open http://magento246.local/ 
 
-8. Open http://magento246.loc/admin/
+8. Open http://magento246.local/admin/
 
 9. MailHog:- You are able to see all the emails from docker(Magento Instance) on http://localhost:8025/
 
@@ -151,15 +151,15 @@ and then pull again. As it is public repo you shouldn't need to login
  
          
          map $http_host $MAGE_RUN_CODE {
-            magento246-second.loc second_website_code;
-            magento246.loc base;
+            magento246-second.local second_website_code;
+            magento246.local base;
          }
          upstream fastcgi_backend {
               server php:9000;
           }
           server {
               listen 80;
-              server_name magento246.loc magento246-second.loc;
+              server_name magento246.local magento246-second.local;
               set $MAGE_ROOT /var/www/magento246;
               set $MAGE_MODE developer;
               fastcgi_param  MAGE_MODE $MAGE_MODE;
@@ -175,7 +175,7 @@ and then pull again. As it is public repo you shouldn't need to login
           }
           
        
-  10.3). Configure your hosts file: 127.0.0.1 magento246.loc magento246-second.loc <br />
+  10.3). Configure your hosts file: 127.0.0.1 magento246.local magento246-second.local <br />
             1. In windows:-  c:\Windows\System32\Drivers\etc\hosts. <br />
             2. Mac/Ubuntu:-  /etc/hosts     <br />
   

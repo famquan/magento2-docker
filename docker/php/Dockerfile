@@ -49,7 +49,8 @@ RUN echo "realpath_cache_ttl=7200" > /usr/local/etc/php/conf.d/realpath_cache_tt
 # Install Composer
 #RUN cd /usr/src && curl -sS http://getcomposer.org/installer | php
 RUN cd /usr/src && curl https://getcomposer.org/download/2.2.6/composer.phar --output composer.phar | php
-RUN cd /usr/src && mv composer.phar /usr/bin/composer
+RUN cd /usr/src && mv composer.phar /usr/bin/composer && chmod a+x /usr/bin/composer
+RUN cd /usr/src && composer config -g http-basic.repo.magento.com ${MAGENTO_REPO_PUBLIC_KEY} ${MAGENTO_REPO_PRIVATE_KEY}
 
 # Configure MailHog
 RUN go get github.com/mailhog/mhsendmail
